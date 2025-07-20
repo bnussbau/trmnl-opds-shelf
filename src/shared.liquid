@@ -1,0 +1,35 @@
+{% assign display_layout = trmnl.plugin_settings.custom_fields_values.display_layout %}
+
+{% assign polling_url = trmnl.plugin_settings.polling_url %}
+{% if polling_url != blank %}
+  {% assign url_parts = polling_url | split: '/' %}
+  {% assign base_url = url_parts[0] | append: '//' | append: url_parts[2] %}
+{% endif %}
+
+{% template entry_item %}
+<div class="item">
+  <div class="meta"></div>
+  <div class="content flex flex--column gap--medium">
+    {% if display_layout != 'description' %}
+      <div class="">
+        <img
+          src="{{ base_url }}{{ entry.link[1].href }}"
+          height="{{ height | default: 150 }}"
+          class="image image-dither"
+          style="object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(1.1) saturate(0.8);"
+        >
+      </div>
+    {% endif %}
+    {% if display_layout != 'cover' %}
+      <div class="stretch">
+        <div class="title title--small clamp--1">{{ entry.title }}</div>
+        <div class="label label--small clamp--1">{{ entry.author.name }}</div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endtemplate %}
+
+{%- capture plugin_icon %}
+<svg class="w-64 h-64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" id="mdi-bookshelf" viewBox="0 0 24 24"><path d="M9 3V18H12V3H9M12 5L16 18L19 17L15 4L12 5M5 5V18H8V5H5M3 19V21H21V19H3Z"></path></svg>
+{% endcapture %}

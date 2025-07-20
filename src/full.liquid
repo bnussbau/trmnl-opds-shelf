@@ -1,0 +1,23 @@
+<div class="layout">
+  <div class="columns">
+    <div class="column">
+      <div
+        class="list"
+        data-list-limit="true"
+        data-list-max-height="420"
+        data-list-hidden-count="true"
+        data-list-max-columns="4"
+      >
+        {% for entry in feed.entry %}
+          {% render 'entry_item' with entry: entry, height: 150, display_layout: display_layout, base_url: base_url %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="data:image/svg+xml;base64,{{ plugin_icon | base64_encode }}">
+  <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+  <span class="instance">{{ feed.title }}</span>
+</div>
