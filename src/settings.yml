@@ -21,7 +21,7 @@ custom_fields:
   field_type: author_bio
   description: "Display your personal bookshelf by connecting to an OPDS feed"
   github_url: https://github.com/bnussbau/trmnl-opds-shelf
-  learn_more_url: https://github.com/bnussbau/trmnl-opds-shelf/README.md
+  learn_more_url: https://github.com/bnussbau/trmnl-opds-shelf/tree/main#-opds-bookshelf-for-trmnl
 - keyname: display_layout
   field_type: select
   name: Layout Style
